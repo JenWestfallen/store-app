@@ -1,0 +1,8 @@
+<h1> Our Amazing Art Supplies: </h1>
+<%=@products.each do |product| %>
+  <p> NAME: <%=product.name%> </p>
+  <p> PRICE: <%=product.price%> </p>
+  <p> DESCRIPTION: <%=product.description%> </p>
+ <div style="background-image:url('<%= product.image %>'); height: 400px; background-position: center; background-size: contain; background-repeat: no-repeat;">
+ </div>
+<% end %>
