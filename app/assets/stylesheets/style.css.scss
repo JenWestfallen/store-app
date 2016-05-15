@@ -1,0 +1,24 @@
+$accent-color: #d04;
+
+body {
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  background-image: url(tweed.png);
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $accent-color;
+}
+
+.thumbnail {
+  height: 500px;
+}
+
+h1 {
+  color: #e085c2;
+  border-bottom: solid $accent-color 1px;
+}

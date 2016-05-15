@@ -1,14 +1,17 @@
-<div class="container">
+<h1> Our Amazing Products </h1>
 
-<h1> Products </h1>
-
-<% @products.each do |product| %>
-  <h2> <%= product.name %></h2>
-  <h3> PRICE: <%= product.price %> </h3>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <h2> <%= link_to "#{product.name}", "/products/#{product.id}" %></h2>
+        <h3> PRICE: <%= product.price %> </h3>
   <!--  <div style="background-image:url('<%= product.image %>'); height: 400px; background-position: center; background-size: contain; background-repeat: no-repeat;">
  </div> -->
- <img class="img-responsive" src="<%= product.image %>" alt="product image" >
-  <h3> DESCRIPTION: <%= product.description %> </h3>
-  <br>
+        <img class="img-responsive" src="<%= product.image %>" alt="product image" >
+        <h3> DESCRIPTION: <%= product.description %> </h3>
+        <br>
+      </div>
+    </div>
   <%end%>
-  </div>
+</div>
