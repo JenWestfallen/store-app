@@ -1,9 +1,41 @@
 <h1> <%=@product.name %></h1>
+<h1> <%=@product.sale_message %></h1>
+<h1> <%@product.images.each do |image| %></h1>
+  <img src="<%= image.image %>">
+  <%end%> 
+<h4> Categories: </h4>
+<ul>
+<% @product.categories.each do |category| %>
+  <li><%= category.name %> </li>
+<%end%>
+</ul>
 
-<h3> PRICE: <%=@product.price %> </h3>
-<img class="img-responsive" src="<%= @product.image %>" alt="product image" >
+<% if user_signed_in? %>
+  <h2> How many would you like to buy? </h2>
+  <%= form_tag '/carted_products', method: :post do%>
+ 
+    <div class="form-group">
+      <%= label_tag :quantity %>
+      <%= text_field_tag :quantity %>
+    </div>
+  <div class="form-group">
+    <%= hidden_field_tag :product_id, @product.id %>
+  </div>
+  <%end%>
+
+  <% else %>
+    <h2>If you want to purchase this item, please <%= link_to 'Sign In', '/users/sign_in' %> or <%= link_to 'Sign Up', '/users/sign_up' %> </h2>
+
+  <%= submit_tag 'Add To Cart', class: "btn btn-default" %>
+<%end%>
+
+<h6> PRICE: <%= number_to_currency(@product.price) %> </h6>
+<h6> TAX: <%= number_to_currency(@product.tax) %> </h6>
+<h6> TOTAL: <%= number_to_currency(@product.total) %> </h6>
+
 <h4> DESCRIPTION: <%=@product.description %> </h4>
-
-<h5><a href="/products/<%= @product.id %>/edit">Edit</a></h5>
-
-<h5><%= link_to"Delete", "/products/#{@product.id}", method: :delete%>  </h5>
+ 
+<% if user_signed_in? && current_user.admin %>
+    <h5><a href="/products/<%= @product.id %>/edit">Edit</a></h5>
+    <h5><%= link_to "Delete", "/products/#{@product.id}", method: :delete%>  </h5>
+<%end%>

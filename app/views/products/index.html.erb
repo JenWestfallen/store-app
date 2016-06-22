@@ -6,12 +6,14 @@
       <div class="thumbnail">
         <h2> <%= link_to "#{product.name}", "/products/#{product.id}" %></h2>
         <h3> PRICE: <%= product.price %> </h3>
-  <!--  <div style="background-image:url('<%= product.image %>'); height: 400px; background-position: center; background-size: contain; background-repeat: no-repeat;">
- </div> -->
-        <img class="img-responsive" src="<%= product.image %>" alt="product image" >
+        
         <h3> DESCRIPTION: <%= product.description %> </h3>
+
         <br>
       </div>
     </div>
   <%end%>
 </div>
+
+<p><%= @test_token %></p>
+<p><%= @test_secret %></p>
